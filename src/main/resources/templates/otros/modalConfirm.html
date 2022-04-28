@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<script>
+    $(document).ready(function () {
+        $(".modal-btn-si").click(function (event) {
+            let volumId = event.target.id;
+            $.get("/deleteVolumId?volumId=" + volumId);
+            $("#modalConfirm").modal('hide');
+        });
+    });
+
+</script>
+<body>
+<button type="button" class="btn btn-default modal-btn-si" th:id="${volumId}">Si</button>
+<div class="alert" role="alert" id="result"></div>
+</body>
+</html>

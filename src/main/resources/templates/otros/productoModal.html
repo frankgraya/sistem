@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<style>
+    th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<table border="1" class="table table-hover">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Producto</th>
+        <th scope="col">Reporte De Volúmen Mensual</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="producto, itemStat : *{productSet}">
+        <td>
+            <table style="border: 2px solid black;border-collapse: collapse;width:100%;">
+                <tr>
+                    <td>Clave Producto</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getClaveProducto()}"></td>
+                </tr>
+                <tr>
+                    <td>Clave Subproducto</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getClaveSubProducto()}"></td>
+                </tr>
+                <tr>
+                    <td>Compos. Octanaje Gasolina</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getComposOctanajeGasolina()}"></td>
+                </tr>
+                <tr>
+                    <td>Diesel Con Combustible No Fosil</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].dieselConCombustibleNoFosil}"></td>
+                </tr>
+                <tr>
+                    <td>Gasolina Con Combustible No Fosil</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].gasolinaConCombustibleNoFosil}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table style="border: 2px solid black;border-collapse: collapse;width:100%;">
+                <tr>
+                    <td>Volumen de Existencias Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getControlDeExistencias().getVolumenExistenciasMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Fecha y Hora esta Medicion Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getControlDeExistencias().getFechaYHoraEstaMedicionMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Total Recepciones Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getRecepciones().getTotalRecepcionesMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Total Documentos Recepciones Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getRecepciones().getTotalDocumentosMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Importe Total Recepciones Mensual</td>
+                    <td th:text="'$' + *{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getRecepciones().getImporteTotalRecepcionesMensual()}"></td>
+                </tr>
+                <tr>
+                    <td>Suma Volumen Recepcion Mes</td>
+                    <td th:text="|*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getRecepciones().getSumaVolumenRecepcionMes().getValorNumerico()} *{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getRecepciones().getSumaVolumenRecepcionMes().getUnidadDeMedida()}|"></td>
+                </tr>
+                <tr>
+                    <td>Total Entregas Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getEntregas().getTotalEntregasMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Total Documentos Entregas Mes</td>
+                    <td th:text="*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getEntregas().getTotalDocumentosMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Importe Total Entregas Mes</td>
+                    <td th:text="'$' + *{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getEntregas().getImporteTotalEntregasMes()}"></td>
+                </tr>
+                <tr>
+                    <td>Suma Volumen Entregado Mes</td>
+                    <td th:text="|*{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getEntregas().getSumaVolumenEntregadoMes().getValorNumerico()} *{productSet[__${itemStat.index}__].getReporteDeVolumenMensual().getEntregas().getSumaVolumenEntregadoMes().getUnidadDeMedida()}|"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</html>

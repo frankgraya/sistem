@@ -1,0 +1,19 @@
+package com.avalon.Avalon.Util;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+
+import java.io.IOException;
+
+/**
+ *Settings for JSON string conversion (Boolean).
+ * - No → false
+ * - Si → true
+ */
+public class NumericBooleanDeserializer extends JsonDeserializer<Boolean> {
+    @Override
+    public Boolean deserialize(JsonParser parser, DeserializationContext context) throws IOException {
+        return !"No".equals(parser.getText());
+    }
+}
